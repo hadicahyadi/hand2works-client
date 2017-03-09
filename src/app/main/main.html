@@ -1,0 +1,73 @@
+<!-- The drawer is always open in large screens. The header is always shown,
+  even in small screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+  <header class="mdl-layout__header" style="background: url('./assets/images/bg_2.png')">
+    <div class="mdl-layout__header-row">
+      <h5>{{pageTitle}}</h5>
+      <div class="mdl-layout-spacer"></div>
+      <strong>welcome, bajigur !</strong> &nbsp;&nbsp;&nbsp;
+      <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">more_vert</i>
+      </button>
+      <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
+        <li class="mdl-menu__item"><a>Change Password</a></li>
+        <li class="mdl-menu__item">Logout</li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="mdl-layout__drawer">
+    <!-- <span class="mdl-layout-title"><img src="assets/images/logo-white.png" /></span> -->
+    <div class="navigation-header">
+      <div class="logo-header">
+        <img src="assets/images/logoSmall.png" />
+        &nbsp;<strong>Back Office System 1.0</strong>
+      </div>
+      <div class="navigation-user-profile mdl-shadow--2dp">
+        <img src="assets/images/user.png" class="user-image"/>
+        <span>
+          Bajigur Man<br>
+          Logged in as : ADMIN
+        </span>
+      </div>
+    </div>
+
+    <nav class="mdl-navigation">
+      <p style="margin-left:20px;color:#4DB6AC">Navigation</p>
+      <a class="mdl-navigation__link" ui-sref="main.dashboard"><i class="material-icons menu-icon">dashboard</i>Dashboard</a>
+
+      <a class="mdl-navigation__link" id="masterBtn" href=""><i class="material-icons menu-icon">description</i>Master
+        <!-- <button id="masterBtn" class="mdl-button mdl-js-button mdl-button--icon">
+         <i class="material-icons">arrow_drop_down</i>
+       </button> -->
+       <i class="material-icons" style="float:right">expand_more</i>
+     </a>
+      <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="masterBtn">
+        <li class="mdl-menu__item" ui-sref="main.brand">Brand</li>
+        <li class="mdl-menu__item" ui-sref="main.category">Category</li>
+        <li class="mdl-menu__item" ui-sref="main.supplier">Warehouse</li>
+        <li class="mdl-menu__item" ui-sref="main.product">Product</li>
+        <li class="mdl-menu__item" ui-sref="main.product">Stock Management</li>
+        <li class="mdl-menu__item" ui-sref="main.product">Product Group</li>
+      </ul>
+
+      <a class="mdl-navigation__link" ui-sref="main.cashier"><i class="material-icons menu-icon">shopping_cart</i>Sales Order</a>
+
+      <a class="mdl-navigation__link" href="" id="historyBtn"><i class="material-icons menu-icon">history</i>History
+        <i class="material-icons" style="float:right">expand_more</i>
+      </a>
+
+      <a class="mdl-navigation__link" ui-sref="main.user"><i class="material-icons menu-icon">group</i>User</a>
+    </nav>
+  </div>
+
+  <main class="mdl-layout__content">
+    <!-- <div class="modal-backdrop" ng-show="backdrop"></div> -->
+    <div class="page-content" id="pageContent">
+      <div ui-view style="overflow-x:auto" id="mainContent"></div>
+    </div>
+  </main>
+</div>
+
+
+

@@ -1,0 +1,81 @@
+<div class="modal-backdrop animated fadeIn" id="backdrop"></div>
+<div class="modal-holder" autoscroll="false" id="modalHolder">
+
+	<div class="modal-box" style="width:80%">
+		<div class="mdl-card__title mdl-color--primary">
+			<h2 class="mdl-card__title-text mdl-color-text--white">Create/Edit Product</h2>
+		</div>
+		<form id="dialog-form" ng-submit="vm.save()" metho="POST" enctype="multipart/form-data">
+			<br/>
+			<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="autoCode">
+				<input type="checkbox" id="autoCode" ng-model="vm.autoCode" class="mdl-switch__input" checked>
+				<span class="mdl-switch__label mdl-color-text--accent" style="font-size:14px"><strong>Auto Generated Code</strong></span>
+			</label>
+			<div class="mdl-grid" style="padding:0px">
+				<div class="mdl-cell mdl-cell--4-col">
+					<div ng-class="vm.isEdit()">
+						<select id="brand" class="mdl-textfield__input" required ng-model="vm.product.brandId" ng-options="brand.id as brand.brandName for brand in vm.brands">
+						</select>
+						<label class="mdl-textfield__label" for="brand">Brand</label>
+					</div>
+				</div>
+				<div class="mdl-cell mdl-cell--4-col">
+					<div ng-class="vm.isEdit()">
+						<select id="category" class="mdl-textfield__input" required ng-model="vm.product.categoryId" ng-options="category.id as category.categoryName for category in vm.categories">
+						</select>
+						<label class="mdl-textfield__label" for="category">Category</label>
+					</div>
+				</div>
+				<div class="mdl-cell mdl-cell--4-col">
+					<div ng-class="vm.isEdit()">
+						<input class="mdl-textfield__input" required ng-model="vm.product.productCode" type="text" ng-disabled="vm.autoCode" id="productCode">
+						<label class="mdl-textfield__label" for="productCode">Product Code</label>
+					</div>
+				</div>
+			</div>
+			<div class="mdl-grid" style="padding:0px">
+				<div class="mdl-cell mdl-cell--4-col">
+					<div ng-class="vm.isEdit()">
+						<input class="mdl-textfield__input" required ng-model="vm.product.productName" type="text" required id="productName">
+						<label class="mdl-textfield__label" for="productName">Product Name</label>
+					</div>
+				</div>
+				<div class="mdl-cell mdl-cell--4-col">
+					<div ng-class="vm.isEdit()">
+						<input class="mdl-textfield__input" required ng-model="vm.product.price" ng-init="vm.product.price = 0" type="text" id="price">
+						<label class="mdl-textfield__label" for="price">Price</label>
+					</div>
+				</div>
+				<div class="mdl-cell mdl-cell--4-col">
+					<div ng-class="vm.isEdit()">
+						<input class="mdl-textfield__input" required ng-model="vm.product.minStock" ng-init="vm.product.minStock = 0" type="text" id="minStock">
+						<label class="mdl-textfield__label" for="minStock">Min Stock</label>
+					</div>
+				</div>
+			</div>
+			<div class="mdl-grid" style="padding:0px">
+				<div class="mdl-cell mdl-cell--4-col" style="padding-top:15px;overflow-wrap: break-word">
+					<!-- File input -->
+					<button type="file" name="imageFile" ngf-select="vm.uploadFiles($file, $invalidFiles)" class="mdl-button mdl-button--primary mdl-button--icon">
+						<i class="material-icons">attach_file</i>
+					</button>&nbsp;Image : <br>{{vm.imageFile.name}}
+					<div style="font:smaller;color:red">{{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}</div>
+				</div>
+				<div class="mdl-cell mdl-cell--4-col">
+					<div ng-class="vm.isEdit()">
+						<input class="mdl-textfield__input" ng-model="vm.product.description" type="text" id="description">
+						<label class="mdl-textfield__label" for="description">Description</label>
+					</div>
+				</div>
+			</div>
+			<div class=".mdl-card__actions">
+				<button type="submit" class="mdl-button mdl-js-button mdl-button--accent save">Save</button>
+				<button type="button" class="mdl-button mdl-js-button mdl-button--accent close" ng-click="vm.brand = null">Cancel</button>
+			</div>
+		</form>
+	</div>
+
+</div>
+
+
+

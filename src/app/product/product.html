@@ -1,0 +1,47 @@
+<!-- Accent-colored raised button with ripple -->
+<button  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="$parent.backdrop = true" ui-sref="main.product.dialog" id="createBtn">
+  Create
+</button>
+<br/>
+<br/>
+<table class="mdl-data-table mdl-js-data-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Product Name</th>
+      <th>Product Code</th>
+      <th>Brand</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Min Stock</th>
+      <th>Total Stock</th>
+      <th>Image</th>
+      <th>Description</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="ng-animation-disabled" dir-paginate="product in vm.products | itemsPerPage: vm.pageSize" current-page="vm.currentPage" total-items="vm.dataCount">
+      <td>{{product.id}}</td>
+      <td>{{product.productName}}</td>
+      <td>{{product.productCode}}</td>
+      <td>{{product.brand.name}}</td>
+      <td>{{product.category.categoryName}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.minStock}}</td>
+      <td>{{product.totalStock}}</td>
+      <td><img src="data:image/jpg;base64,{{product.imageName}}" style="max-width:25%"></td>
+      <td>{{product.description}}</td>
+      <td style="padding-top:8px;padding-right:12px">
+       <button id="editBtn" ui-sref="main.product.product-dialog" ng-click="vm.edit(product)" class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--accent"><i class="material-icons" style="font-size:18px" >edit</i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<dir-pagination-controls
+        boundary-links="true"
+        on-page-change="vm.pageChangeHandler(newPageNumber)">
+</dir-pagination-controls>
+
+
+<div ui-view autoscroll="false"></div>
